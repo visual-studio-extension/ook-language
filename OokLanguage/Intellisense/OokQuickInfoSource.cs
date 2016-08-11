@@ -91,6 +91,12 @@ namespace OokLanguage
                     applicableToSpan = _buffer.CurrentSnapshot.CreateTrackingSpan(tagSpan, SpanTrackingMode.EdgeExclusive);
                     quickInfoContent.Add("Regular Ook.");
                 }
+                else if (curTag.Tag.type == OokTokenTypes.CakeFunction)
+                {
+                    var tagSpan = curTag.Span.GetSpans(_buffer).First();
+                    applicableToSpan = _buffer.CurrentSnapshot.CreateTrackingSpan(tagSpan, SpanTrackingMode.EdgeExclusive);
+                    quickInfoContent.Add("Regular Ook.");
+                }
             }
         }
 

@@ -71,6 +71,7 @@ namespace OokLanguage
             _ookTypes[OokTokenTypes.OokExclamation] = typeService.GetClassificationType("ook!");
             _ookTypes[OokTokenTypes.OokPeriod] = typeService.GetClassificationType("ook.");
             _ookTypes[OokTokenTypes.OokQuestion] = typeService.GetClassificationType("ook?");
+            _ookTypes[OokTokenTypes.CakeFunction] = typeService.GetClassificationType("cakeFunction");
         }
 
         public event EventHandler<SnapshotSpanEventArgs> TagsChanged

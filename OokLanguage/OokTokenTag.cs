@@ -19,6 +19,7 @@ namespace OokLanguage
     using Microsoft.VisualStudio.Text.Editor;
     using Microsoft.VisualStudio.Text.Tagging;
     using Microsoft.VisualStudio.Utilities;
+    using Customize;
 
     [Export(typeof(ITaggerProvider))]
     [ContentType("ook!")]
@@ -55,6 +56,19 @@ namespace OokLanguage
             _ookTypes["ook!"] = OokTokenTypes.OokExclamation;
             _ookTypes["ook."] = OokTokenTypes.OokPeriod;
             _ookTypes["ook?"] = OokTokenTypes.OokQuestion;
+
+
+
+            _ookTypes["delete"] = OokTokenTypes.CakeFunction;
+            _ookTypes["copy"] = OokTokenTypes.CakeFunction;
+            _ookTypes["cd"] = OokTokenTypes.CakeFunction;
+            _ookTypes["hello"] = OokTokenTypes.CakeFunction;
+
+            /*
+            CakeFunctions.Functions.ForEach(x => {
+                _ookTypes[x] = OokTokenTypes.CakeFunction;
+            });
+            */
         }
 
         public event EventHandler<SnapshotSpanEventArgs> TagsChanged

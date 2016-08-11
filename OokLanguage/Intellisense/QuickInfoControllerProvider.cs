@@ -18,21 +18,16 @@ using Microsoft.VisualStudio.Utilities;
 
 namespace VSLTK.Intellisense
 {
-    #region IIntellisenseControllerProvider
 
     [Export(typeof(IIntellisenseControllerProvider))]
     [Name("Template QuickInfo Controller")]
     [ContentType("text")]
     internal class TemplateQuickInfoControllerProvider : IIntellisenseControllerProvider
     {
-        #region Asset Imports
 
         [Import]
         internal IQuickInfoBroker QuickInfoBroker { get; set; }
 
-        #endregion
-
-        #region IIntellisenseControllerFactory Members
 
         public IIntellisenseController TryCreateIntellisenseController(ITextView textView,
             IList<ITextBuffer> subjectBuffers)
@@ -40,9 +35,6 @@ namespace VSLTK.Intellisense
             return new TemplateQuickInfoController(textView, subjectBuffers, this);
         }
 
-        #endregion
-
     }
 
-    #endregion
 }

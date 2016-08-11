@@ -26,7 +26,6 @@ using System.Runtime.InteropServices;
 
 namespace OokLanguage
 {
-    #region Command Filter
 
     [Export(typeof(IVsTextViewCreationListener))]
     [ContentType("ook!")]
@@ -211,6 +210,4 @@ namespace OokLanguage
             return Next.QueryStatus(pguidCmdGroup, cCmds, prgCmds, pCmdText);
         }
     }
-
-    #endregion
 }

@@ -16,7 +16,6 @@ using Microsoft.VisualStudio.Utilities;
 
 namespace OokLanguage
 {
-    #region Format definition
     /// <summary>
     /// Defines the editor format for the ookExclamation classification type. Text is colored BlueViolet
     /// </summary>
@@ -82,5 +81,22 @@ namespace OokLanguage
             ForegroundColor = Colors.Orange;
         }
     }
-    #endregion //Format definition
+
+    [Export(typeof(EditorFormatDefinition))]
+    [ClassificationType(ClassificationTypeNames = "cakeFunction")]
+    [Name("cakeFunction")]
+    [UserVisible(false)]
+    [Order(Before = Priority.Default)]
+    internal sealed class CakeFunction : ClassificationFormatDefinition
+    {
+        /// <summary>
+        /// Defines the visual format for the "period" classification type
+        /// </summary>
+        public CakeFunction()
+        {
+            DisplayName = "cakeFunction"; //human readable version of the name
+            ForegroundColor = Colors.Orange;
+        }
+
+    }
 }

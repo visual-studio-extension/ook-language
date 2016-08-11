@@ -17,7 +17,6 @@ namespace OokLanguage
 {
     internal static class OrdinaryClassificationDefinition
     {
-        #region Type definition
 
         /// <summary>
         /// Defines the "ookExclamation" classification type.
@@ -40,6 +39,9 @@ namespace OokLanguage
         [Name("ook.")]
         internal static ClassificationTypeDefinition ookPeriod = null;
 
-        #endregion
+        [Export(typeof(ClassificationTypeDefinition))]
+        [Name("cakeFunction")]
+        internal static ClassificationTypeDefinition cakeFunction = null;
+
     }
 }
