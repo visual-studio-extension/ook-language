@@ -13,44 +13,10 @@ namespace OokLanguage
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.Composition;
     using Microsoft.VisualStudio.Text;
     using Microsoft.VisualStudio.Text.Classification;
     using Microsoft.VisualStudio.Text.Tagging;
-    using Microsoft.VisualStudio.Utilities;
     using Tag;
-
-    [Export(typeof(ITaggerProvider))]
-    [ContentType("ook!")]
-    [TagType(typeof(ClassificationTag))]
-    internal sealed class OokClassifierProvider : ITaggerProvider
-    {
-
-        [Export]
-        [Name("ook!")]
-        [BaseDefinition("code")]
-        internal static ContentTypeDefinition OokContentType = null;
-
-        [Export]
-        [FileExtension(".ook")]
-        [ContentType("ook!")]
-        internal static FileExtensionToContentTypeDefinition OokFileType = null;
-
-        [Import]
-        internal IClassificationTypeRegistryService ClassificationTypeRegistry = null;
-
-        [Import]
-        internal IBufferTagAggregatorFactoryService aggregatorFactory = null;
-
-        public ITagger<T> CreateTagger<T>(ITextBuffer buffer) where T : ITag
-        {
-
-            ITagAggregator<OokTokenTag> ookTagAggregator = 
-                                            aggregatorFactory.CreateTagAggregator<OokTokenTag>(buffer);
-
-            return new OokClassifier(buffer, ookTagAggregator, ClassificationTypeRegistry) as ITagger<T>;
-        }
-    }
 
     internal sealed class OokClassifier : ITagger<ClassificationTag>
     {
@@ -58,9 +24,6 @@ namespace OokLanguage
         ITagAggregator<OokTokenTag> _aggregator;
         IDictionary<OokTokenTypes, IClassificationType> _ookTypes;
 
-        /// <summary>
-        /// Construct the classifier and define search tokens
-        /// </summary>
         internal OokClassifier(ITextBuffer buffer, 
                                ITagAggregator<OokTokenTag> ookTagAggregator, 
                                IClassificationTypeRegistryService typeService)
@@ -80,9 +43,6 @@ namespace OokLanguage
             remove { }
         }
 
-        /// <summary>
-        /// Search the given span for any instances of classified tags
-        /// </summary>
         public IEnumerable<ITagSpan<ClassificationTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
             foreach (var tagSpan in _aggregator.GetTags(spans))
