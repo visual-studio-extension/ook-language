@@ -9,39 +9,12 @@
 //
 //***************************************************************************
 
-namespace OokLanguage
+namespace OokLanguage.Tag
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.Composition;
     using Microsoft.VisualStudio.Text;
-    using Microsoft.VisualStudio.Text.Classification;
-    using Microsoft.VisualStudio.Text.Editor;
     using Microsoft.VisualStudio.Text.Tagging;
-    using Microsoft.VisualStudio.Utilities;
-    using Customize;
-
-    [Export(typeof(ITaggerProvider))]
-    [ContentType("ook!")]
-    [TagType(typeof(OokTokenTag))]
-    internal sealed class OokTokenTagProvider : ITaggerProvider
-    {
-
-        public ITagger<T> CreateTagger<T>(ITextBuffer buffer) where T : ITag
-        {
-            return new OokTokenTagger(buffer) as ITagger<T>;
-        }
-    }
-
-    public class OokTokenTag : ITag 
-    {
-        public OokTokenTypes type { get; private set; }
-
-        public OokTokenTag(OokTokenTypes type)
-        {
-            this.type = type;
-        }
-    }
 
     internal sealed class OokTokenTagger : ITagger<OokTokenTag>
     {

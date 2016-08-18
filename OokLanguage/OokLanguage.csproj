@@ -190,12 +190,14 @@
     <Compile Include="Intellisense\CompletionController.cs" />
     <Compile Include="Intellisense\CompletionSource.cs" />
     <Compile Include="Intellisense\OokQuickInfoSource.cs" />
-    <Compile Include="OokTokenTag.cs" />
-    <Compile Include="OokTokenTypes.cs" />
+    <Compile Include="Tag\OokTokenTagger.cs" />
+    <Compile Include="Tag\OokTokenTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classification\OokClassifier.cs" />
     <Compile Include="Intellisense\QuickInfoController.cs" />
     <Compile Include="Intellisense\QuickInfoControllerProvider.cs" />
+    <Compile Include="Tag\OokTokenTag.cs" />
+    <Compile Include="Tag\OokTokenTagProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
